@@ -39,3 +39,5 @@ keycloak
   .catch((error) => {
     console.log(error);
   });
+
+// app.mount("#app");
