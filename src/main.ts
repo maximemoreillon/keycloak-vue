@@ -24,6 +24,8 @@ const keycloakStore = useKeycloakStore();
 
 keycloakStore.keycloak = keycloak;
 
+// onLoad is 'login-required'|'check-sso';
+
 keycloak
   .init({
     onLoad: "login-required",
@@ -35,6 +37,13 @@ keycloak
       console.log(`Keycload init complete`);
       app.mount("#app");
     }
+
+    //Token Refresh
+    setInterval(async () => {
+      console.log("Refreshing token");
+      const refreshed = await keycloak.updateToken(70);
+      console.log({ refreshed });
+    }, 6000);
   })
   .catch((error) => {
     console.log(error);
