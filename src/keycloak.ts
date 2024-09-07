@@ -12,14 +12,14 @@ export const kcClient = new Keycloak({
   clientId: VITE_KEYCLOAK_CLIENT_ID,
 });
 
-kcClient.onReady = () => {
-  console.log("[Keycloak] onReady");
-};
+// kcClient.onReady = () => {
+//   console.log("[Keycloak] onReady");
+// };
 
-kcClient.onActionUpdate = () => {
-  console.log("[Keycloak] onActionUpdate");
-};
+// kcClient.onActionUpdate = () => {
+//   console.log("[Keycloak] onActionUpdate");
+// };
 
-kcClient.onAuthSuccess = () => {
-  console.log("[Keycloak] onAuthSuccess");
-};
+// kcClient.onAuthSuccess = () => {
+//   console.log("[Keycloak] onAuthSuccess");
+// };

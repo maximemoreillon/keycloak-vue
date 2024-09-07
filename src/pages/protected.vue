@@ -38,6 +38,6 @@ const getProtectedData = async () => {
 };
 
 onMounted(() => {
-  getProtectedData();
+  // getProtectedData();
 });
 </script>

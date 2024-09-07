@@ -6,11 +6,9 @@
       <v-app-bar-title> Vue + Keycloak </v-app-bar-title>
       <v-spacer />
 
-      <v-btn
-        v-if="keycloakStore.client.authenticated"
-        to="/profile"
-        icon="mdi-account"
-      />
+      <template v-if="keycloakStore.client.authenticated">
+        <v-btn @click="() => keycloakStore.client.logout()" icon="mdi-logout" />
+      </template>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer">
       <v-list>
