@@ -1,26 +1,9 @@
 <template>
-  <h2>Sensitive data</h2>
+  <h2 class="my-8">Home</h2>
+  <p>
+    This is a demo Vue.js application using the keycloak-js module to
+    authenticate users
+  </p>
 </template>
 
-<script lang="ts" setup>
-import { useKeycloakStore } from "@/stores/keycloak";
-
-const { VITE_PROTECTED_DATA_URL } = import.meta.env;
-
-const keycloakStore = useKeycloakStore();
-
-const getProtectedData = async () => {
-  const url = VITE_PROTECTED_DATA_URL;
-  const headers = {
-    authorization: `Bearer ${keycloakStore.keycloak?.token}`,
-  };
-
-  const response = await fetch(url, { headers });
-  const text = await response.text();
-  console.log(text);
-};
-
-onMounted(() => {
-  getProtectedData();
-});
-</script>
+<script lang="ts" setup></script>

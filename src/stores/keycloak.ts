@@ -1,10 +1,11 @@
 import Keycloak from "keycloak-js";
 import { defineStore } from "pinia";
+import { kcClient } from "@/keycloak";
 
 export const useKeycloakStore = defineStore("keycloak", () => {
-  const keycloak = ref<Keycloak>();
+  const client = ref<Keycloak>(kcClient);
 
   return {
-    keycloak,
+    client,
   };
 });
