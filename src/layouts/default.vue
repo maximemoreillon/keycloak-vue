@@ -6,21 +6,13 @@
       <v-app-bar-title> Vue + Keycloak </v-app-bar-title>
       <v-spacer />
 
-      <template v-if="keycloakStore.client.authenticated">
-        <v-btn @click="() => keycloakStore.client.logout()" icon="mdi-logout" />
-      </template>
+      <LoginButton />
     </v-app-bar>
     <v-navigation-drawer v-model="drawer">
       <v-list>
         <v-list-item link title="Home" to="/" />
         <v-list-item link title="Profile" to="/profile" />
-        <v-list-item
-          v-if="keycloakStore.client.authenticated"
-          link
-          title="Logout"
-          to="/logout"
-        />
-        <v-list-item v-else link title="Login" to="/login" />
+
         <v-list-item link title="Protected" to="/protected" />
         <v-list-item link title="Unprotected" to="/unprotected" />
       </v-list>
@@ -30,14 +22,9 @@
         <router-view />
       </v-container>
     </v-main>
-
-    <AppFooter />
   </v-app>
 </template>
 
 <script lang="ts" setup>
-import { useKeycloakStore } from "@/stores/keycloak";
-
 const drawer = ref();
-const keycloakStore = useKeycloakStore();
 </script>

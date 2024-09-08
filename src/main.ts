@@ -13,10 +13,10 @@ kcClient
   })
   .then(() => {
     registerPlugins(app);
+    app.mount("#app");
+
     // const keycloakStore = useKeycloakStore();
     // keycloakStore.client = kcClient;
-
-    app.mount("#app");
 
     setInterval(() => {
       if (kcClient.authenticated) kcClient.updateToken();

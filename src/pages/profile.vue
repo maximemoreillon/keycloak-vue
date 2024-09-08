@@ -3,15 +3,11 @@
 
   <p>Authenticated: {{ keycloakStore.client.authenticated }}</p>
 
-  <h3>user info</h3>
-  <pre>
-    {{ JSON.stringify(userInfo, null, 2) }}
-  </pre>
+  <h3 class="my-4">user info</h3>
+  <pre>{{ JSON.stringify(userInfo, null, 2) }}</pre>
 
-  <h3>User profile</h3>
-  <pre>
-      {{ JSON.stringify(userProfile, null, 2) }}
-  </pre>
+  <h3 class="my-4">User profile</h3>
+  <pre>{{ JSON.stringify(userProfile, null, 2) }}</pre>
 </template>
 
 <script lang="ts" setup>
