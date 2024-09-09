@@ -1,34 +1,41 @@
 import { registerPlugins } from "@/plugins";
 import App from "./App.vue";
 import { createApp } from "vue";
-import { useKeycloakStore } from "./stores/keycloak";
+import { kcClient } from "@/keycloak";
 
 const app = createApp(App);
 
-registerPlugins(app);
-
-const keycloakStore = useKeycloakStore();
-
-// keycloakStore.client.init({
-//   onLoad: "check-sso", // 'login-required'|'check-sso';
-// });
-// app.mount("#app");
-
-//  This approach enforces login prior to using the app
-console.log(`Keycoak client init...`);
-keycloakStore.client
+kcClient
   .init({
-    onLoad: "login-required", // 'login-required'|'check-sso';
+    // onLoad: "check-sso", // 'login-required'|'check-sso';
+    onLoad: "check-sso",
     enableLogging: true,
   })
-  .then((authorized) => {
-    console.log(`Keycoak client init finished`);
+  .then(() => {
+    registerPlugins(app);
+    app.mount("#app");
 
-    if (authorized) app.mount("#app");
+    // const keycloakStore = useKeycloakStore();
+    // keycloakStore.client = kcClient;
 
-    // Token refresh
     setInterval(() => {
-      console.log("[Keycloak] Checking if token as expired");
-      keycloakStore.client.updateToken();
+      if (kcClient.authenticated) kcClient.updateToken();
     }, 60000);
   });
+
+//  This approach enforces login prior to using the app
+// keycloakStore.client
+//   .init({
+//     onLoad: "login-required", // 'login-required'|'check-sso';
+//     enableLogging: true,
+//   })
+//   .then((authorized) => {
+
+//     if (authorized) app.mount("#app");
+
+//     // Token refresh
+//     setInterval(() => {
+//       console.log("[Keycloak] Checking if token as expired");
+//       keycloakStore.client.updateToken();
+//     }, 60000);
+//   });
