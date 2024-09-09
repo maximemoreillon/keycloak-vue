@@ -11,8 +11,8 @@ export const beforeEachHandler: NavigationGuardWithThis<undefined> = async (
     console.log("Route is protected");
 
     if (!kcClient.authenticated) {
-      // kcClient.login();
-      // return false;
+      kcClient.login();
+      return false;
     }
   }
 
