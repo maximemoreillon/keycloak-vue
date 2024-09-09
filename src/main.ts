@@ -7,7 +7,6 @@ const app = createApp(App);
 
 kcClient
   .init({
-    // onLoad: "check-sso", // 'login-required'|'check-sso';
     onLoad: "check-sso",
     enableLogging: true,
   })
@@ -24,18 +23,18 @@ kcClient
   });
 
 //  This approach enforces login prior to using the app
-// keycloakStore.client
+// kcClient
 //   .init({
 //     onLoad: "login-required", // 'login-required'|'check-sso';
-//     enableLogging: true,
 //   })
 //   .then((authorized) => {
-
-//     if (authorized) app.mount("#app");
+//     if (authorized) {
+//       registerPlugins(app);
+//       app.mount("#app");
+//     }
 
 //     // Token refresh
 //     setInterval(() => {
-//       console.log("[Keycloak] Checking if token as expired");
-//       keycloakStore.client.updateToken();
+//       if (kcClient.authenticated) kcClient.updateToken();
 //     }, 60000);
 //   });

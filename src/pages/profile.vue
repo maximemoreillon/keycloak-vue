@@ -3,7 +3,7 @@
 
   <p>Authenticated: {{ keycloakStore.client.authenticated }}</p>
 
-  <h3 class="my-4">user info</h3>
+  <h3 class="my-4">User info</h3>
   <pre>{{ JSON.stringify(userInfo, null, 2) }}</pre>
 
   <h3 class="my-4">User profile</h3>
